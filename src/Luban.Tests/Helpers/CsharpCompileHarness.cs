@@ -28,7 +28,7 @@ public static class CsharpCompileHarness
         var build = RunDotnet(["build", csprojPath, "-c", "Release", "-v", "q"]);
         Assert.True(build.ExitCode == 0, $"dotnet build failed:\n{build.Output}");
 
-        var dll = Path.Combine(workDir, "bin", "Release", "net8.0", $"GeneratedConsumer_{id}.dll");
+        var dll = Path.Combine(workDir, "bin", "Release", "net10.0", $"GeneratedConsumer_{id}.dll");
         Assert.True(File.Exists(dll), $"Built DLL missing: {dll}");
 
         var asm = alc.LoadFromAssemblyPath(dll);
@@ -155,7 +155,7 @@ public static class CsharpCompileHarness
         return $"""
             <Project Sdk="Microsoft.NET.Sdk">
               <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ImplicitUsings>enable</ImplicitUsings>
                 <Nullable>disable</Nullable>
                 <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
