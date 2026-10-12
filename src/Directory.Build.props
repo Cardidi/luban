@@ -1,0 +1,16 @@
+<Project>
+
+  <!--
+    Release output is what gets published as the tools (Luban / Luban.Agent /
+    Luban.Mcp); debug symbol (.pdb) files are not needed there and should not
+    end up in the publish folder.
+
+    Release therefore skips PDB generation entirely (DebugType=none).
+    For local debugging with symbols, build the Debug configuration, or publish
+    with -p:DebugType=portable (global property overrides this file).
+  -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+</Project>
